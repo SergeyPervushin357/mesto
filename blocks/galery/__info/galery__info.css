@@ -1,0 +1,6 @@
+.galery__info {
+    display: flex;
+    background-color: white;
+    padding: 25px 15px 31px 21px;
+    justify-content: space-between;
+}

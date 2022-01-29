@@ -1,0 +1,14 @@
+.profile__researcher {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+}
+
+@media screen and (max-width: 640px) {
+    .profile__researcher {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        padding-bottom: 36px;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+ </head>
+ <body class="home">
+     <main class="content">
+     <header class="header">
+         <img class="haeder__logo" src="./images/Vector.png" alt="логотип">
+         <div class="header__line"></div>
+     </header>
+     <section class="profile">
+            <article class="profile__info">
+                <div class= "profile__image"></div>
+                    <div class="profile__text">
+                        <div class="profile__name">
+                          <h1 class="profile__title">Жак-Ив Кусто</h1>
+                          <button class="profile__vector" type="button"></button>
+                        </div>
+                        <p class="profile__researcher">Исследователь океана</p>
+                    </div>
+            </article>
+            <button class="profile__button" type="button"></button>
+     </section>
+
+     <section class="popup">
+         <div class="popup__blok">
+         <h2 class="popup__title">Редактировать профиль</h2>
+         <form class="popup__info" name="info">
+             <input type="text" value="Жак-Ив Кусто" class="popup__text popup__text_nameInput">
+             <input type="text" value="Исследователь океана" class="popup__text popup__text_jobInput">
+             <button class="popup__save" type="submit">Сохранить</button>
+         </form>
+         <button class="popup__closed" type="button"></button>
+        </div>
+     </section>
+
+     <section class="galery">
+         <ul class="galery__list">
+
+         <li class="galery__image">
+         <img class="galery__photo" src="./images/Карачаево.jpg" alt="Карачаево">
+         <div class="galery__info">
+             <h2 class="galery__text">Карачаево</h2>
+             <button class="galery__heart" type="button"></button>
+         </div>
+         </li>
+
+         <li class="galery__image">
+            <img class="galery__photo" src="./images/мумбаи.jpg" alt="Мумбаи">
+            <div class="galery__info">
+                <h2 class="galery__text">Мумбаи</h2>
+                <button class="galery__heart" type="button"></button>
+            </div>
+            </li>
+
+            <li class="galery__image">
+                <img class="galery__photo" src="./images/Черкессия.jpg" alt="Карачаево-Черкессия">
+                <div class="galery__info">
+                    <h2 class="galery__text">Карачаево-Черкессия</h2>
+                    <button class="galery__heart" type="button"></button>
+                </div>
+                </li>
+
+                <li class="galery__image">
+                    <img class="galery__photo" src="./images/Эльбрус.jpg" alt="Эльбрус">
+                    <div class="galery__info">
+                        <h2 class="galery__text">Эльбрус</h2>
+                        <button class="galery__heart" type="button"></button>
+                    </div>
+                    </li>
+
+                    <li class="galery__image">
+                        <img class="galery__photo" src="./images/мумбаий.jpg" alt="Мумбаи">
+                        <div class="galery__info">
+                            <h2 class="galery__text">Мумбаи</h2>
+                            <button class="galery__heart" type="button"></button>
+                        </div>
+                        </li>
+
+                        <li class="galery__image">
+                            <img class="galery__photo" src="./images/elbrus-4627301__340.jpg" alt="Эльбрус">
+                            <div class="galery__info">
+                                <h2 class="galery__text">Эльбрус</h2>
+                                <button class="galery__heart" type="button"></button>
+                            </div>
+                            </li>
+        </ul>
+     </section>
+    </main>
+    <footer class="year">
+        <p class="yaer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+    <script src="./scripts/script.js"></script>
+ </body>
