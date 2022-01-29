@@ -9,6 +9,11 @@
     height: 32px;
     background: bottom;
     margin: 0 0 8px 8px;
+    transition: opacity .4s ease-in;
+}
+
+.popup__closed:hover {
+    opacity: 0.6;
 }
 
 .popup__closed:before, .popup__closed:after {
