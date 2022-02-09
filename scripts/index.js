@@ -1,4 +1,4 @@
-//определяем переменные
+//we find the elements in html and save them in a variable
 let popup = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__info');
 let nameInput = document.querySelector('.popup__text-name');
@@ -8,18 +8,18 @@ let openbutton = document.querySelector('.profile__open');
 let title = document.querySelector('.profile__title');
 let researcher = document.querySelector('.profile__researcher');
 
-//открываем попап.
-//p.s. Здравствуйте Оксана. Не совсем понимаю сути задачи? При открытии popap у меня вставляются данные из профиля.
+//opening the pop-up.
+//p.s. Здравствуйте Оксана. Не совсем понимаю сути что должен исправить? При открытии pop-up у меня вставляются данные из профиля в форму. Если не сложно можно по подробнее.
 function popuponON() {
     popup.classList.add('popup_open');
 
 }
-//закрываем попап.
+//closing the pop-up.
 function popupOff() {
     popup.classList.remove('popup_open');
 }
 
-// Обработчик «отправки» формы.
+// Handler for "sending" the form.
 function formSubmitHandler(evt) {
     evt.preventDefault();
     title.textContent = nameInput.value;
@@ -27,10 +27,10 @@ function formSubmitHandler(evt) {
     popupOff();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+// Attaching the handler to the form:
+// it will track the "send" - "sending" event
 formElement.addEventListener('submit', formSubmitHandler);
 
-//
+//listeners
 openbutton.addEventListener('click', popuponON);
 buttonclosed.addEventListener('click', popupOff);
