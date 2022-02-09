@@ -9,7 +9,6 @@ let title = document.querySelector('.profile__title');
 let researcher = document.querySelector('.profile__researcher');
 
 //opening the pop-up.
-//p.s. Здравствуйте Оксана. Не совсем понимаю сути что должен исправить? При открытии pop-up у меня вставляются данные из профиля в форму. Если не сложно можно по подробнее.
 function popuponON() {
     popup.classList.add('popup_open');
 
