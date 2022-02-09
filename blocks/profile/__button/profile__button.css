@@ -6,6 +6,7 @@
     transition: opacity .5s ease-in;
     font-size: 20px;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .profile__button:hover {

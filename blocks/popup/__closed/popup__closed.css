@@ -19,7 +19,7 @@
 .popup__closed:before, .popup__closed:after {
     content: "";
     position: absolute;
-    height: 33px;
+    height: 32px;
     width: 3px;
     background-color: #FFFFFF;
     top: 0;
@@ -37,6 +37,12 @@
     .popup__closed {
         right: 0;
         margin: 0 0 16px;
-        top: -48px;
+        width: 20px;
+        height: 20px;
+        top: -36px;
+    }
+
+    .popup__closed:before, .popup__closed:after {
+        height: 20px;
     }
 }
