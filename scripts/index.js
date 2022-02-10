@@ -11,7 +11,8 @@ let researcher = document.querySelector('.profile__researcher');
 //opening the pop-up.
 function popuponON() {
     popup.classList.add('popup_open');
-
+    nameInput.value = title.textContent;
+    jobInput.value = researcher.textContent;
 }
 //closing the pop-up.
 function popupOff() {
