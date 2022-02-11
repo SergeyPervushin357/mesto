@@ -1,8 +1,8 @@
 //we find the elements in html and save them in a variable
 let popup = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__info');
-let nameInput = document.querySelector('.popup__text-name');
-let jobInput = document.querySelector('.popup__text-job');
+let nameInput = document.querySelector('.popup__text_form_name');
+let jobInput = document.querySelector('.popup__text_form_job');
 let buttonclosed = document.querySelector('.popup__closed');
 let openbutton = document.querySelector('.profile__open');
 let title = document.querySelector('.profile__title');
@@ -10,13 +10,13 @@ let researcher = document.querySelector('.profile__researcher');
 
 //opening the pop-up.
 function popuponON() {
-    popup.classList.add('popup_open');
+    popup.classList.add('popup__open');
     nameInput.value = title.textContent;
     jobInput.value = researcher.textContent;
 }
 //closing the pop-up.
 function popupOff() {
-    popup.classList.remove('popup_open');
+    popup.classList.remove('popup__open');
 }
 
 // Handler for "sending" the form.

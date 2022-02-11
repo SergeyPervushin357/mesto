@@ -1,4 +1,5 @@
 .popup__closed {
+    background: url(../../../images/Close\ Icon.svg);
     position: absolute;
     right: -38px;
     top: -37px;
@@ -7,7 +8,6 @@
     padding: 0;
     width: 32px;
     height: 32px;
-    background: bottom;
     margin: 0 0 8px 8px;
     transition: opacity .4s ease-in;
 }
@@ -16,33 +16,13 @@
     opacity: 0.6;
 }
 
-.popup__closed:before, .popup__closed:after {
-    content: "";
-    position: absolute;
-    height: 32px;
-    width: 3px;
-    background-color: #FFFFFF;
-    top: 0;
-}
-
-.popup__closed:before {
-    transform: rotate(45deg);
-}
-
-.popup__closed:after {
-    transform: rotate(-45deg);
-}
-
 @media screen and (max-width: 520px) {
     .popup__closed {
+        background: url(../../../images/Close\ Iconn.svg);
         right: 0;
         margin: 0 0 16px;
         width: 20px;
         height: 20px;
         top: -36px;
-    }
-
-    .popup__closed:before, .popup__closed:after {
-        height: 20px;
     }
 }
