@@ -1,8 +1,8 @@
 //we find the elements in html and save them in a variable
 let popup = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__info');
-let nameInput = document.querySelector('.popup__text_form_name');
-let jobInput = document.querySelector('.popup__text_form_job');
+let nameInput = document.querySelector('.popup__text_type_name');
+let jobInput = document.querySelector('.popup__text_type_job');
 let buttonclosed = document.querySelector('.popup__closed');
 let openbutton = document.querySelector('.profile__open');
 let title = document.querySelector('.profile__title');
