@@ -10,13 +10,13 @@ let researcher = document.querySelector('.profile__researcher');
 
 //opening the pop-up.
 function popuponON() {
-    popup.classList.add('popup__open');
+    popup.classList.add('popup_open');
     nameInput.value = title.textContent;
     jobInput.value = researcher.textContent;
 }
 //closing the pop-up.
 function popupOff() {
-    popup.classList.remove('popup__open');
+    popup.classList.remove('popup_open');
 }
 
 // Handler for "sending" the form.
