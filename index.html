@@ -19,70 +19,21 @@
                 <div class="profile__text">
                     <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__open" type="button" aria-label="open"></button>
+                        <button class="profile__open" type="button" aria-label="открыть"></button>
                     </div>
                     <p class="profile__researcher">Исследователь океана</p>
                 </div>
             </article>
-            <button class="profile__button" type="button" aria-label="add"></button>
+            <button class="profile__button" type="button" aria-label="добавить"></button>
         </section>
         <section class="gallery">
-            <ul class="gallery__list">
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/karachaevo.jpg" alt="Карачаево">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Карачаево</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/mumbai.jpg" alt="Мумбаи">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Мумбаи</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/cherkessiya.jpg" alt="Карачаево-Черкессия">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Карачаево-Черкессия</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/elbrus.jpg" alt="Эльбрус">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Эльбрус</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/mumbaii.jpg" alt="Мумбаи">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Мумбаи</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__image">
-                    <img class="gallery__photo" src="./images/elbrus-4627301__340.jpg" alt="Эльбрус">
-                    <div class="gallery__info">
-                        <h2 class="gallery__text">Эльбрус</h2>
-                        <button class="gallery__heart" type="button" aria-label="like"></button>
-                    </div>
-                </li>
-            </ul>
+            <ul class="gallery__list"></ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_profile">
         <div class="popup__block">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__info" name="info">
@@ -90,7 +41,36 @@
                 <input type="text" value="Исследователь океана" class="popup__text popup__text_type_job" name="job">
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
-            <button class="popup__closed" type="button" aria-label="close"></button>
+            <button class="popup__closed" type="button" aria-label="закрыть"></button>
+        </div>
+    </div>
+
+    <div class="popup popup_add">
+        <div class="popup__block">
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__info" name="info">
+                <input type="images" value="Название" class="popup__text popup__text_name" name="name">
+                <input type="url" value="Ссылка на картинку" class="popup__text popup__text_type_link" name="link">
+                <button class="popup__save popup__save_add" type="submit">Создать</button>
+            </form>
+            <button class="popup__closed popup__closed_add" type="button" aria-label="закрыть"></button>
+        </div>
+    </div>
+    <template class="images">
+        <li class="gallery__image">
+            <img class="gallery__photo" src="#" alt="картинка">
+            <button class="gallery__delete" aria-label="удалить"></button>
+            <div class="gallery__info">
+                <h2 class="gallery__text"></h2>
+                <button class="gallery__heart" type="button" aria-label="лайк"></button>
+            </div>
+        </li>
+    </template>
+    <div class="popup popup_big">
+        <div class="popup__photo">
+            <img class="popup__image" alt="картинка">
+            <button class="popup__closed popup__closed_img" aria-label="закрыть"></button>
+            <p class="popup__caption"></p>
         </div>
     </div>
     <script src="./scripts/index.js"></script>
