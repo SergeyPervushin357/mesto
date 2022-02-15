@@ -103,7 +103,6 @@ function popupPhotoProfile(item) {
     popupImage.src = item.link;
 }
 
-
 //listeners
 openButton.addEventListener('click', editingProfiles);
 porfilePopupCloseButton.addEventListener('click', () => popupClosing(popupProfile));
