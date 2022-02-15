@@ -5,8 +5,7 @@ const porfilePopupCloseButton = profilePopup.querySelector('.popup__closed');
 const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const openButton = document.querySelector('.profile__open');
-const formElement = document.querySelector('.popup__info').reset();
+const openButtonPopup = document.querySelector('.profile__open');
 const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const addCardPopup = document.querySelector('.popup_add');
@@ -21,44 +20,49 @@ const popupTypeName = document.querySelector('.popup__text_name');
 const popupTypeLink = document.querySelector('.popup__text_type_link');
 const popupProfile = document.querySelector('.popup_profile');
 const popupClosedImg = document.querySelector('.popup__closed_img');
-const popupFormAdd = document.querySelector('.popup__form').reset();
+const popupFormAdd = document.querySelector('.popup__form');
+const formProfileEdit = document.querySelector('.popup__info');
 
 
 //opening the pop-up.
-function popupOpen(popup) {
+function openPopup(popup) {
     popup.classList.add('popup_open');
-    
+
 }
 //closing the pop-up.
-function popupClosing(popup) {
+function closingPopup(popup) {
     popup.classList.remove('popup_open');
 }
 //profiles function
 function editingProfiles() {
-    popupOpen(popupProfile);
+    openPopup(popupProfile);
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubtitle.textContent;
+    formProfileEdit.reset();
 }
 
 // opening the pop-up add
-function popupAddOpen() {
-    popupOpen(addCardPopup);
+function addPopupOpen() {
+    openPopup(addCardPopup);
+    popupFormAdd.reset();
 }
 // closing the pop-up add
-function popupAddClosing() {
-    popupClosing(addCardPopup);
+function addPopupClosing() {
+    closingPopup(addCardPopup);
 }
 
 // Handler for "sending" the form.
-function formSubmitHandler(event) {
+function profileForm(event) {
     event.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
-    popupClosing(popupProfile);
+    closingPopup(popupProfile);
 }
 
 
 // Attaching the handler to the form:
 // it will track the "send" - "sending" event
-formElement.addEventListener('submit', formSubmitHandler);
+formProfileEdit.addEventListener('submit', profileForm);
 
 initialCards.forEach(addPhoto);
 //adding pictures
@@ -78,7 +82,7 @@ function newImage(image) {
 }
 function addImage(event) {
     event.preventDefault();
-    popupAddClosing();
+    addPopupClosing();
     addPhoto({ name: popupTypeName.value, link: popupTypeLink.value });
 }
 
@@ -97,16 +101,16 @@ function likeImage(event) {
 
 //form function
 function popupPhotoProfile(item) {
-    popupOpen(popupOpenImage);
+    openPopup(popupOpenImage);
     popupCaption.textContent = item.name;
     popupImage.alt = item.name;
     popupImage.src = item.link;
 }
 
 //listeners
-openButton.addEventListener('click', editingProfiles);
-porfilePopupCloseButton.addEventListener('click', () => popupClosing(popupProfile));
-profileButton.addEventListener('click', popupAddOpen);
-buttonClosedAdd.addEventListener('click', () => popupAddClosing(addCardPopup));
+openButtonPopup.addEventListener('click', editingProfiles);
+porfilePopupCloseButton.addEventListener('click', () => closingPopup(popupProfile));
+profileButton.addEventListener('click', addPopupOpen);
+buttonClosedAdd.addEventListener('click', () => addPopupClosing(addCardPopup));
 popupFormAdd.addEventListener('submit', addImage);
-popupClosedImg.addEventListener('click', () => popupClosing(popupOpenImage));
+popupClosedImg.addEventListener('click', () => closingPopup(popupOpenImage));
