@@ -5,7 +5,7 @@ const porfilePopupCloseButton = profilePopup.querySelector('.popup__closed');
 const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const openButtonPopup = document.querySelector('.profile__open');
+const buttonOpenPopupEdit = document.querySelector('.profile__open');
 const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const addCardPopup = document.querySelector('.popup_add');
@@ -108,7 +108,7 @@ function popupPhotoProfile(item) {
 }
 
 //listeners
-openButtonPopup.addEventListener('click', editingProfiles);
+buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 porfilePopupCloseButton.addEventListener('click', () => closingPopup(popupProfile));
 profileButton.addEventListener('click', addPopupOpen);
 buttonClosedAdd.addEventListener('click', () => addPopupClosing(addCardPopup));
