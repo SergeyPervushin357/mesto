@@ -6,7 +6,7 @@ const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const openButton = document.querySelector('.profile__open');
-const formElement = document.querySelector('.popup__info');
+const formElement = document.querySelector('.popup__info').reset();
 const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const addCardPopup = document.querySelector('.popup_add');
@@ -21,7 +21,7 @@ const popupTypeName = document.querySelector('.popup__text_name');
 const popupTypeLink = document.querySelector('.popup__text_type_link');
 const popupProfile = document.querySelector('.popup_profile');
 const popupClosedImg = document.querySelector('.popup__closed_img');
-const popupFormAdd = document.querySelector('.popup__form');
+const popupFormAdd = document.querySelector('.popup__form').reset();
 
 
 //opening the pop-up.
@@ -36,15 +36,11 @@ function popupClosing(popup) {
 //profiles function
 function editingProfiles() {
     popupOpen(popupProfile);
-    nameInput.value = '';
-    jobInput.value = '';
 }
 
 // opening the pop-up add
 function popupAddOpen() {
     popupOpen(addCardPopup);
-    popupTypeName.value = '';
-    popupTypeLink.value = '';
 }
 // closing the pop-up add
 function popupAddClosing() {
