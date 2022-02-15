@@ -1,137 +1,117 @@
 //we find the elements in html and save them in a variable
 const popup = document.querySelector('.popup');
-const profilebutton = document.querySelector('.profile__button');
+const profilePopup = document.querySelector('.popup_profile');
+const porfilePopupCloseButton = profilePopup.querySelector('.popup__closed');
+const profileButton = document.querySelector('.profile__button');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+const openButton = document.querySelector('.profile__open');
 const formElement = document.querySelector('.popup__info');
 const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
-const buttonclosed = document.querySelector('.popup__closed');
-const openbutton = document.querySelector('.profile__open');
-const title = document.querySelector('.profile__title');
-const researcher = document.querySelector('.profile__researcher');
-const buttonclosedadd = document.querySelector('.popup__closed_add');
-const popupadd = document.querySelector('.popup_add');
-const popupsavadd = document.querySelector('.popup__save_add');
-const images = document.querySelector('.images').content;
+const addCardPopup = document.querySelector('.popup_add');
+const buttonClosedAdd = addCardPopup.querySelector('.popup__closed_add');
+const popupSaveAdd = addCardPopup.querySelector('.popup__save_add');
+const imageTemplate = document.querySelector('.images').content;
 const gallerylist = document.querySelector('.gallery__list');
-const popupimage = document.querySelector('.popup__image');
-const popupbig = document.querySelector('.popup_big');
-const popupcaption = document.querySelector('.popup__caption');
-const popuptypename = document.querySelector('.popup__text_name');
-const popuptypelink = document.querySelector('.popup__text_type_link');
-const popupprofile = document.querySelector('.popup_profile');
-const popupclosedimg = document.querySelector('.popup__closed_img');
+const popupImage = document.querySelector('.popup__image');
+const popupOpenImage = document.querySelector('.popup_viewing');
+const popupCaption = document.querySelector('.popup__caption');
+const popupTypeName = document.querySelector('.popup__text_name');
+const popupTypeLink = document.querySelector('.popup__text_type_link');
+const popupProfile = document.querySelector('.popup_profile');
+const popupClosedImg = document.querySelector('.popup__closed_img');
+const popupFormAdd = document.querySelector('.popup__form');
 
 
 //opening the pop-up.
-function popuponON(popup) {
+function popupOpen(popup) {
     popup.classList.add('popup_open');
+    
 }
 //closing the pop-up.
-function popupOff(popup) {
+function popupClosing(popup) {
     popup.classList.remove('popup_open');
 }
 //profiles function
-function Editingprofiles() {
-    nameInput.value = title.textContent;
-    jobInput.value = researcher.textContent;
-    popuponON(popupprofile);
+function editingProfiles() {
+    popupOpen(popupProfile);
+    nameInput.value = '';
+    jobInput.value = '';
 }
 
 // opening the pop-up add
-function popupaddON() {
-    popuponON(popupadd);
+function popupAddOpen() {
+    popupOpen(addCardPopup);
+    popupTypeName.value = '';
+    popupTypeLink.value = '';
 }
 // closing the pop-up add
-function popupaddOff() {
-    popupOff(popupadd);
+function popupAddClosing() {
+    popupClosing(addCardPopup);
 }
 
 // Handler for "sending" the form.
 function formSubmitHandler(event) {
     event.preventDefault();
-    title.textContent = nameInput.value;
-    researcher.textContent = jobInput.value;
-    popupOff(popupprofile);
+    profileTitle.textContent = nameInput.value;
+    profileSubtitle.textContent = jobInput.value;
+    popupClosing(popupProfile);
 }
+
 
 // Attaching the handler to the form:
 // it will track the "send" - "sending" event
 formElement.addEventListener('submit', formSubmitHandler);
 
-
-//adding an array
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-initialCards.forEach(Cards);
+initialCards.forEach(addPhoto);
 //adding pictures
-function newimage(image) {
-    const photo = images.cloneNode(true);
-    const galleryphoto = photo.querySelector('.gallery__photo');
-    const gallerytext = photo.querySelector('.gallery__text');
-    const deleteimages = photo.querySelector('.gallery__delete');
-    deleteimages.addEventListener('click', deleteimage);
-    const likeheart = photo.querySelector('.gallery__heart');
-    likeheart.addEventListener('click', likeImage);
-    gallerytext.textContent = image.name;
-    galleryphoto.src = image.link;
-    galleryphoto.alt = image.name;
-    galleryphoto.addEventListener('click', () => popupphoto(image));
+function newImage(image) {
+    const photo = imageTemplate.cloneNode(true);
+    const galleryPhoto = photo.querySelector('.gallery__photo');
+    const galleryText = photo.querySelector('.gallery__text');
+    const deleteImages = photo.querySelector('.gallery__delete');
+    deleteImages.addEventListener('click', deleteImage);
+    const likeHeart = photo.querySelector('.gallery__heart');
+    likeHeart.addEventListener('click', likeImage);
+    galleryText.textContent = image.name;
+    galleryPhoto.src = image.link;
+    galleryPhoto.alt = image.name;
+    galleryPhoto.addEventListener('click', () => popupPhotoProfile(image));
     return photo;
 }
-//form addimage
-function addimage(event) {
+function addImage(event) {
     event.preventDefault();
-    popupaddOff();
-    Cards({ name: popuptypename.value, link: popuptypelink.value });
+    popupAddClosing();
+    addPhoto({ name: popupTypeName.value, link: popupTypeLink.value });
+}
+
+function addPhoto(image) {
+    gallerylist.prepend(newImage(image));
 }
 //deleting the image
-function deleteimage(a) {
-    a.target.closest('.gallery__image').remove();
+function deleteImage(event) {
+    event.target.closest('.gallery__image').remove();
 }
 //adding likes
-function likeImage(a) {
-    a.target.classList.toggle('gallery__heart_active');
+function likeImage(event) {
+    event.target.classList.toggle('gallery__heart_active');
 }
 
-function Cards(image) {
-    gallerylist.prepend(newimage(image));
-}
+
 //form function
-function popupphoto(item) {
-    popuponON(popupbig);
-    popupcaption.textContent = item.name;
-    popupimage.alt = item.name;
-    popupimage.src = item.link;
+function popupPhotoProfile(item) {
+    popupOpen(popupOpenImage);
+    popupCaption.textContent = item.name;
+    popupImage.alt = item.name;
+    popupImage.src = item.link;
 }
+
 
 //listeners
-openbutton.addEventListener('click', Editingprofiles);
-buttonclosed.addEventListener('click', () => popupOff(popupprofile));
-profilebutton.addEventListener('click', popupaddON);
-buttonclosedadd.addEventListener('click', () => popupaddOff(popupadd));
-popupsavadd.addEventListener('click', addimage);
-popupclosedimg.addEventListener('click', () => popupOff(popupbig));
+openButton.addEventListener('click', editingProfiles);
+porfilePopupCloseButton.addEventListener('click', () => popupClosing(popupProfile));
+profileButton.addEventListener('click', popupAddOpen);
+buttonClosedAdd.addEventListener('click', () => popupAddClosing(addCardPopup));
+popupFormAdd.addEventListener('submit', addImage);
+popupClosedImg.addEventListener('click', () => popupClosing(popupOpenImage));
