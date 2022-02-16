@@ -38,21 +38,20 @@ function editingProfiles() {
     openPopup(popupProfile);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
-    formProfileEdit.reset();
 }
 
 // opening the pop-up add
-function addPopupOpen() {
+function addImageOpenPopup() {
     openPopup(addCardPopup);
     popupFormAdd.reset();
 }
 // closing the pop-up add
-function addPopupClosing() {
+function addImageClosingPopup() {
     closingPopup(addCardPopup);
 }
 
 // Handler for "sending" the form.
-function profileForm(event) {
+function editProfileSubmitFormHandling(event) {
     event.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
@@ -62,11 +61,11 @@ function profileForm(event) {
 
 // Attaching the handler to the form:
 // it will track the "send" - "sending" event
-formProfileEdit.addEventListener('submit', profileForm);
+formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
 
 initialCards.forEach(addPhoto);
 //adding pictures
-function newImage(image) {
+function addNewImage(image) {
     const photo = imageTemplate.cloneNode(true);
     const galleryPhoto = photo.querySelector('.gallery__photo');
     const galleryText = photo.querySelector('.gallery__text');
@@ -77,17 +76,17 @@ function newImage(image) {
     galleryText.textContent = image.name;
     galleryPhoto.src = image.link;
     galleryPhoto.alt = image.name;
-    galleryPhoto.addEventListener('click', () => popupZoomImage(image));
+    galleryPhoto.addEventListener('click', () => zoomImagePopup(image));
     return photo;
 }
-function addImage(event) {
+function addImageFormSubmitHandler(event) {
     event.preventDefault();
-    addPopupClosing();
+    addImageClosingPopup();
     addPhoto({ name: popupTypeName.value, link: popupTypeLink.value });
 }
 
 function addPhoto(image) {
-    gallerylist.prepend(newImage(image));
+    gallerylist.prepend(addNewImage(image));
 }
 //deleting the image
 function deleteImage(event) {
@@ -100,7 +99,7 @@ function likeImage(event) {
 
 
 //form function
-function popupZoomImage(item) {
+function zoomImagePopup(item) {
     openPopup(popupOpenImage);
     popupCaption.textContent = item.name;
     popupImage.alt = item.name;
@@ -110,7 +109,7 @@ function popupZoomImage(item) {
 //listeners
 buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 porfilePopupCloseButton.addEventListener('click', () => closingPopup(popupProfile));
-profileButton.addEventListener('click', addPopupOpen);
-buttonClosedAdd.addEventListener('click', () => addPopupClosing(addCardPopup));
-popupFormAdd.addEventListener('submit', addImage);
+profileButton.addEventListener('click', addImageOpenPopup);
+buttonClosedAdd.addEventListener('click', () => addImageClosingPopup(addCardPopup));
+popupFormAdd.addEventListener('submit', addImageFormSubmitHandler);
 popupClosedImg.addEventListener('click', () => closingPopup(popupOpenImage));
