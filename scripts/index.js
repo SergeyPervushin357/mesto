@@ -77,7 +77,7 @@ function newImage(image) {
     galleryText.textContent = image.name;
     galleryPhoto.src = image.link;
     galleryPhoto.alt = image.name;
-    galleryPhoto.addEventListener('click', () => popupPhotoProfile(image));
+    galleryPhoto.addEventListener('click', () => popupZoomImage(image));
     return photo;
 }
 function addImage(event) {
@@ -100,7 +100,7 @@ function likeImage(event) {
 
 
 //form function
-function popupPhotoProfile(item) {
+function popupZoomImage(item) {
     openPopup(popupOpenImage);
     popupCaption.textContent = item.name;
     popupImage.alt = item.name;
