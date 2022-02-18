@@ -30,8 +30,10 @@ function hasInvalidInput(inputList) {
 function toggleButtonState(inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('popup__save_disabled');
+        buttonElement.setAttribute('disabled', true);
     } else {
         buttonElement.classList.remove('popup__save_disabled');
+        buttonElement.removeAttribute('disabled');
     }
 }
 
@@ -64,7 +66,7 @@ const configureValidations = {
     inputSelector: '.popup__text',
     submitButtonSelector: 'popup__save_disabled',
     inactiveButtonClass: 'popup__save_disabled',
-    inputErrorClass: 'popup__text_error',
+    inputErrorClass: 'form__error',
     errorClass: 'form__error_active'
 }
 // включение валидации вызовом enableValidation

@@ -29,8 +29,8 @@ const formProfileEdit = document.querySelector('.popup__form');
 //opening the pop-up.
 function openPopup(popup) {
     popup.classList.add('popup_open');
-    document.addEventListener("keydown", escapeOutput);
-    popup.addEventListener("click", closeWithTheMouse);
+    document.addEventListener('keydown', escapeOutput);
+    document.addEventListener('click', closeWithTheMouse);
 }
 //closing the pop-up.
 function closingPopup(popup) {
@@ -118,8 +118,8 @@ function escapeOutput(evt) {
 
 function closeWithTheMouse(evt) {
     if (evt.target.classList.contains('popup_open')) {
-        const closePopupWithWlick = document.querySelector('.popup_open');
-        closingPopup(closePopupWithWlick);
+        const closePopupWithClick = document.querySelector('.popup_open');
+        closingPopup(closePopupWithClick);
     }
 }
 //listeners
