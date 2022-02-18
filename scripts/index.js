@@ -10,7 +10,7 @@ const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const addCardPopup = document.querySelector('.popup_add');
 const buttonClosedAdd = addCardPopup.querySelector('.popup__closed_add');
-const popupSaveAdd = addCardPopup.querySelector('.popup__save_add');
+const popupSaveAdd = addCardPopup.querySelector('.popup__save');
 const imageTemplate = document.querySelector('.images').content;
 const gallerylist = document.querySelector('.gallery__list');
 const popupImage = document.querySelector('.popup__image');
@@ -20,14 +20,17 @@ const popupTypeName = document.querySelector('.popup__text_name');
 const popupTypeLink = document.querySelector('.popup__text_type_link');
 const popupProfile = document.querySelector('.popup_profile');
 const popupClosedImg = document.querySelector('.popup__closed_img');
-const popupFormAdd = document.querySelector('.popup__form');
-const formProfileEdit = document.querySelector('.popup__info');
+const popupFormAdd = document.querySelector('.popup__form_image');
+const formProfileEdit = document.querySelector('.popup__form');
+
+
 
 
 //opening the pop-up.
 function openPopup(popup) {
     popup.classList.add('popup_open');
-
+    document.addEventListener("keydown", escapeOutput);
+    popup.addEventListener("click", closeWithTheMouse);
 }
 //closing the pop-up.
 function closingPopup(popup) {
@@ -63,7 +66,7 @@ function editProfileSubmitFormHandling(event) {
 // it will track the "send" - "sending" event
 formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
 
-initialCards.forEach(addPhoto);
+
 //adding pictures
 function addNewImage(image) {
     const photo = imageTemplate.cloneNode(true);
@@ -88,6 +91,7 @@ function addImageFormSubmitHandler(event) {
 function addPhoto(image) {
     gallerylist.prepend(addNewImage(image));
 }
+initialCards.forEach(addPhoto);
 //deleting the image
 function deleteImage(event) {
     event.target.closest('.gallery__image').remove();
@@ -105,7 +109,19 @@ function zoomImagePopup(item) {
     popupImage.alt = item.name;
     popupImage.src = item.link;
 }
+function escapeOutput(evt) {
+    if (evt.key === 'Escape') {
+        const escape = document.querySelector('.popup_open');
+        closingPopup(escape);
+    }
+}
 
+function closeWithTheMouse(evt) {
+    if (evt.target.classList.contains('popup_open')) {
+        const Overlay = document.querySelector('.popup_open');
+        closingPopup(Overlay);
+    }
+}
 //listeners
 buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 porfilePopupCloseButton.addEventListener('click', () => closingPopup(popupProfile));
