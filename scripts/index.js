@@ -10,7 +10,7 @@ const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const addCardPopup = document.querySelector('.popup_add');
 const buttonClosedAdd = addCardPopup.querySelector('.popup__closed_add');
-const popupSaveAdd = addCardPopup.querySelector('.popup__save');
+const popupSaveAdd = document.querySelector('.popup__save');
 const imageTemplate = document.querySelector('.images').content;
 const gallerylist = document.querySelector('.gallery__list');
 const popupImage = document.querySelector('.popup__image');
@@ -118,8 +118,8 @@ function escapeOutput(evt) {
 
 function closeWithTheMouse(evt) {
     if (evt.target.classList.contains('popup_open')) {
-        const Overlay = document.querySelector('.popup_open');
-        closingPopup(Overlay);
+        const closePopupWithWlick = document.querySelector('.popup_open');
+        closingPopup(closePopupWithWlick);
     }
 }
 //listeners
