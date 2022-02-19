@@ -1,7 +1,7 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add('popup__text_error');
-    errorElement.classList.add('popup__form_error');
+    errorElement.classList.add('popup__span_error');
     errorElement.textContent = errorMessage;
     errorElement.classList.add('form__error_active');
 };
@@ -9,7 +9,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove('popup__text_error');
-    errorElement.classList.remove('popup__form_error');
+    errorElement.classList.remove('popup__span_error');
     errorElement.classList.remove('form__error_active');
     errorElement.textContent = '';
 };
@@ -66,7 +66,7 @@ const configureValidations = {
     inputSelector: '.popup__text',
     submitButtonSelector: 'popup__save_disabled',
     inactiveButtonClass: 'popup__save_disabled',
-    inputErrorClass: 'popup__form_error',
+    inputErrorClass: 'popup__span_error',
     errorClass: 'form__error_active'
 }
 // включение валидации вызовом enableValidation
