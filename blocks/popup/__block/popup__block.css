@@ -1,16 +1,16 @@
 .popup__block {
-    max-width: 430px;
-    width: 100%;
-    position: relative;
-    background-color: #FFFFFF;
-    border: none;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+  max-width: 430px;
+  width: 100%;
+  position: relative;
+  background-color: #FFFFFF;
+  border: none;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 520px) {
-    .popup__block {
-        max-width: 282px;
-        width: 100%;
-    }
+  .popup__block {
+    max-width: 282px;
+    width: 100%;
+  }
 }
