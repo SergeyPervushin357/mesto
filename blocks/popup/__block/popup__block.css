@@ -1,6 +1,7 @@
 .popup__block {
     max-width: 430px;
     width: 100%;
+    height: 330px;
     position: relative;
     background-color: #FFFFFF;
     border: none;
