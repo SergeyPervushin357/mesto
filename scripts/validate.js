@@ -41,6 +41,12 @@ function toggleButtonState(configureValidations, inputList, buttonElement) {
   }
 }
 
+function showSpan (configureValidations) {
+  const buttonСlosePopups = popup.querySelectorAll('.popup__closed');
+  hideInputError(configureValidations, formElement, inputElement);
+
+
+}
 
 const setEventListeners = (configureValidations, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(configureValidations['inputSelector']));
