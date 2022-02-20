@@ -22,13 +22,16 @@ const popupProfile = document.querySelector('.popup_profile');
 const popupClosedImg = document.querySelector('.popup__closed_img');
 const popupFormAdd = document.querySelector('.popup__form_image');
 const formProfileEdit = document.querySelector('.popup__form_edit');
+const cardButton = document.querySelector(".popup__save_add");
 
 
 //opening the pop-up.
 function openPopup(popup) {
-  popup.classList.add('popup_open');
+  resetButtonMessegeError(popup);
   document.addEventListener('keydown', escapeOutput);
+  popup.classList.add('popup_open');
 }
+
 //closing the pop-up.
 function closingPopup(popup) {
   popup.classList.remove('popup_open');
@@ -44,7 +47,7 @@ function editingProfiles() {
 // opening the pop-up add
 function addImageOpenPopup() {
   popupFormAdd.reset();
-  deactivationButtonsAddImage(addCardPopup);
+
   openPopup(addCardPopup);
 }
 // closing the pop-up add
@@ -81,6 +84,7 @@ function addNewImage(image) {
   galleryPhoto.addEventListener('click', () => zoomImagePopup(image));
   return photo;
 }
+
 function addImageFormSubmitHandler(event) {
   event.preventDefault();
   addImageClosingPopup();
@@ -89,7 +93,10 @@ function addImageFormSubmitHandler(event) {
 
 function addPhoto(image) {
   gallerylist.prepend(addNewImage(image));
+  cardButton.classList.add("popup__button_disabled");
 }
+cardButton.addEventListener("click", addImageFormSubmitHandler);
+
 initialCards.forEach(addPhoto);
 //deleting the image
 function deleteImage(event) {
@@ -115,7 +122,7 @@ function escapeOutput(evt) {
   }
 }
 
-popups.forEach(popup => popup.addEventListener('mousedown', evt => {if (evt.target.classList.contains('popup_open')) {closingPopup(popup)}}))
+popups.forEach(popup => popup.addEventListener('mousedown', evt => { if (evt.target.classList.contains('popup_open')) { closingPopup(popup) } }))
 
 //listeners
 buttonOpenPopupEdit.addEventListener('click', editingProfiles);
