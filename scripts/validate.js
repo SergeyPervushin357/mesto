@@ -20,7 +20,7 @@ const hideInputError = (configureValidations, formElement, inputElement) => {
   inputElement.classList.remove(configureValidations['inputErrorClass']);
   errorElement.classList.remove(configureValidations['errorClass']);
   errorElement.textContent = '';
-};
+}
 
 const checkInputValidity = (configureValidations, formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -28,7 +28,7 @@ const checkInputValidity = (configureValidations, formElement, inputElement) => 
   } else {
     hideInputError(configureValidations, formElement, inputElement);
   }
-};
+}
 
 function resetButtonMessegeError(popup) {
   const popupForm = popup.querySelector(config['formSelector'])
@@ -65,18 +65,18 @@ const setEventListeners = (configureValidations, formElement) => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(configureValidations, formElement, inputElement);
       toggleButtonState(configureValidations, inputList, buttonElement);
-    });
-  });
-};
+    })
+  })
+}
 
 const enableValidation = configureValidations => {
   const formList = Array.from(document.querySelectorAll(configureValidations['formSelector']));
   formList.forEach(formElement => {
     formElement.addEventListener('submit', evt => {
       evt.preventDefault();
-    });
+    })
     setEventListeners(configureValidations, formElement);
-  });
-};
+  })
+}
 
 enableValidation(config);
