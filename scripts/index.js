@@ -28,7 +28,6 @@ const config = {
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__error_active'
 }
-
 const addCardFormValidation = new FormValidator(config, popupFormAdd);
 const editProfileFormValidation = new FormValidator(config, formProfileEdit);
 
@@ -97,12 +96,11 @@ popups.forEach(popup => popup.addEventListener('mousedown', evt => {
   }
 }))
 
-initialCards.forEach(image => addPhoto(image));
-
 formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
 buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 profileButton.addEventListener('click', addImageOpenPopup);
 popupFormAdd.addEventListener('submit', addImageFormSubmitHandler);
 
+initialCards.forEach(image => addPhoto(image));
 addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
