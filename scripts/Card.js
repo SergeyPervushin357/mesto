@@ -26,8 +26,10 @@ export class Card {
   }
 
   _setAddEventListener(){
-    this._gallery.querySelector('.gallery__delete').addEventListener('click', eve => {
-      eve.currentTarget.closest('.gallery__image').remove()});
+    this._gallery.querySelector('.gallery__delete').addEventListener('click', () => {
+      this._gallery.remove();
+      this._gallery = null;
+    });
 
     this._gallery.querySelector('.gallery__heart').addEventListener('click', eve => {
       eve.target.classList.toggle('gallery__heart_active')});
