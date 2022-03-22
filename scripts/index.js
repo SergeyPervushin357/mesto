@@ -1,9 +1,8 @@
 import { initialCards } from "./initial-cards.js";
-
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 const popups = document.querySelectorAll('.popup');
-const profilePopup = document.querySelector('.popup_profile');
 const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -21,9 +20,19 @@ const popupTypeLink = document.querySelector('.popup__text_type_link');
 const popupProfile = document.querySelector('.popup_profile');
 const popupFormAdd = document.querySelector('.popup__form_image');
 const formProfileEdit = document.querySelector('.popup__form_edit');
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__text_error',
+  errorClass: 'popup__error_active'
+}
+
+const addCardFormValidation = new FormValidator(config, popupFormAdd);
+const editProfileFormValidation = new FormValidator(config, formProfileEdit);
 
 function openPopup(popup) {
- // resetButtonMessegeError(popup);
   document.addEventListener('keydown', escapeOutput);
   popup.classList.add('popup_open');
 }
@@ -34,6 +43,7 @@ function closingPopup(popup) {
 }
 
 function editingProfiles() {
+  editProfileFormValidation.resetButtonMessegeError();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
@@ -41,6 +51,7 @@ function editingProfiles() {
 
 function addImageOpenPopup() {
   popupFormAdd.reset();
+  addCardFormValidation.resetButtonMessegeError();
   openPopup(addCardPopup);
 }
 
@@ -92,3 +103,6 @@ formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
 buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 profileButton.addEventListener('click', addImageOpenPopup);
 popupFormAdd.addEventListener('submit', addImageFormSubmitHandler);
+
+addCardFormValidation.enableValidation();
+editProfileFormValidation.enableValidation();
