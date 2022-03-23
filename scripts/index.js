@@ -70,6 +70,7 @@ function addNewImage(image) {
 function addImageFormSubmitHandler(event) {
   event.preventDefault();
   addPhoto({ name: popupTypeName.value, link: popupTypeLink.value });
+  addCardFormValidation.deactivateButton();
   closingPopup(addCardPopup);
 }
 
