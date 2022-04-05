@@ -5,23 +5,13 @@ import { FormValidator } from "../components/FormValidator";
 import { Section } from '../components/Section'
 import * as constants from '../utils/constants';
 import { config } from '../utils/configValidation';
+import { PopupWithImage } from '../components/PopupWithImage';
 
 const addCardFormValidation = new FormValidator(config, constants.popupFormAdd);
 const editProfileFormValidation = new FormValidator(config, constants.formProfileEdit);
 
-const section = new Section({items: initialCards, renderer: addPhoto}, '.gallery__list');
-
-
-
-function openPopup(popup) {
-  document.addEventListener('keydown', escapeOutput);
-  popup.classList.add('popup_open');
-}
-
-function closingPopup(popup) {
-  popup.classList.remove('popup_open');
-  document.removeEventListener('keydown', escapeOutput);
-}
+const section = new Section({ items: initialCards, renderer: addPhoto }, '.gallery__list');
+const popupWithImage = new PopupWithImage('.popup_viewing')
 
 function editingProfiles() {
   editProfileFormValidation.resetButtonMessegeError();
@@ -44,46 +34,35 @@ function editProfileSubmitFormHandling(event) {
 }
 
 function addNewImage(image) {
-  const card = new Card(image, constants.imageTemplate, zoomImagePopup);
+  const card = new Card(
+    image,
+    constants.imageTemplate,
+    () => {
+      popupWithImage.openPopup(image.name, image.link);
+    });
+
   const photo = card.generateCard();
   return photo;
 }
 
 function addImageFormSubmitHandler(event) {
   event.preventDefault();
-  addPhoto({ name: constants.popupTypeName.value, link:constants.popupTypeLink.value });
+  addPhoto({ name: constants.popupTypeName.value, link: constants.popupTypeLink.value });
   addCardFormValidation.deactivateButton();
   closingPopup(constants.addCardPopup);
 }
 
 function addPhoto(image) {
-  constants.gallerylist.prepend(addNewImage(image));
+  section.addItem(addNewImage(image));
 }
-
-function zoomImagePopup(item) {
-  constants.popupCaption.textContent = item.name;
-  constants.popupImage.alt = item.name;
-  constants.popupImage.src = item.link;
-  openPopup(constants.popupOpenImage);
-}
-
-function escapeOutput(evt) {
-  if (evt.key === 'Escape') {
-    closingPopup(document.querySelector('.popup_open'));
-  }
-}
-
-constants.popups.forEach(popup => popup.addEventListener('mousedown', evt => {
-  if (evt.target.classList.contains('popup_open') || evt.target.classList.contains('popup__closed')) {
-    closingPopup(popup);
-  }
-}))
 
 constants.formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
 constants.buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 constants.profileButton.addEventListener('click', addImageOpenPopup);
 constants.popupFormAdd.addEventListener('submit', addImageFormSubmitHandler);
+popupWithImage.setEventListeners();
 
-initialCards.forEach(image => addPhoto(image));
 addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
+
+section.renderItems();
