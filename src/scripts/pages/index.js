@@ -6,31 +6,34 @@ import { Section } from '../components/Section'
 import * as constants from '../utils/constants';
 import { config } from '../utils/configValidation';
 import { PopupWithImage } from '../components/PopupWithImage';
+import { PopupWithForm } from '../components/PopupWithForm';
 
 const addCardFormValidation = new FormValidator(config, constants.popupFormAdd);
 const editProfileFormValidation = new FormValidator(config, constants.formProfileEdit);
 
 const section = new Section({ items: initialCards, renderer: addPhoto }, '.gallery__list');
-const popupWithImage = new PopupWithImage('.popup_viewing')
+const popupWithImage = new PopupWithImage('.popup_viewing');
+const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler);
+const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling);
 
 function editingProfiles() {
   editProfileFormValidation.resetButtonMessegeError();
   constants.nameInput.value = constants.profileTitle.textContent;
   constants.jobInput.value = constants.profileSubtitle.textContent;
-  openPopup(constants.popupProfile);
+  editPopupForm.openPopup(constants.popupProfile);
 }
 
 function addImageOpenPopup() {
   constants.popupFormAdd.reset();
   addCardFormValidation.resetButtonMessegeError();
-  openPopup(constants.addCardPopup);
+  addPopupForm.openPopup(constants.addCardPopup);
 }
 
-function editProfileSubmitFormHandling(event) {
-  event.preventDefault();
-  constants.profileTitle.textContent = constants.nameInput.value;
-  constants.profileSubtitle.textContent = constants.jobInput.value;
-  closingPopup(constants.popupProfile);
+function editProfileSubmitFormHandling(data) {
+  const {name, job} = data;
+  constants.profileTitle.textContent = name;
+  constants.profileSubtitle.textContent = job;
+  editPopupForm.closePopup();
 }
 
 function addNewImage(image) {
@@ -45,24 +48,26 @@ function addNewImage(image) {
   return photo;
 }
 
-function addImageFormSubmitHandler(event) {
-  event.preventDefault();
-  addPhoto({ name: constants.popupTypeName.value, link: constants.popupTypeLink.value });
+function addImageFormSubmitHandler(data) {
+  section.addItem(addNewImage(data));
   addCardFormValidation.deactivateButton();
-  closingPopup(constants.addCardPopup);
+  addPopupForm.closePopup();
 }
 
 function addPhoto(image) {
   section.addItem(addNewImage(image));
 }
 
-constants.formProfileEdit.addEventListener('submit', editProfileSubmitFormHandling);
+
 constants.buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 constants.profileButton.addEventListener('click', addImageOpenPopup);
-constants.popupFormAdd.addEventListener('submit', addImageFormSubmitHandler);
+
 popupWithImage.setEventListeners();
 
 addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
+addPopupForm.setEventListeners();
+editPopupForm.setEventListeners();
+
 
 section.renderItems();

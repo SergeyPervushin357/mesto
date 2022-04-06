@@ -18,8 +18,8 @@ export class Popup {
     }
   }
   setEventListeners() {
-    this._popup.addEventListener('click', (e) => {
-      if (!e.target.closest('popup__block') || e.target.classList.contains('popup__closed')) {
+    this._popup.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('popup_open') || e.target.classList.contains('popup__closed')) {
         this.closePopup();
       }
     })
