@@ -65,10 +65,9 @@ function addPhoto(image) {
 constants.buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 constants.profileButton.addEventListener('click', addImageOpenPopup);
 
-popupWithImage.setEventListeners();
-
 addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
+popupWithImage.setEventListeners();
 addPopupForm.setEventListeners();
 editPopupForm.setEventListeners();
 section.renderItems();
