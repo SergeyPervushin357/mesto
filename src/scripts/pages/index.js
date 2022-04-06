@@ -7,6 +7,7 @@ import * as constants from '../utils/constants';
 import { config } from '../utils/configValidation';
 import { PopupWithImage } from '../components/PopupWithImage';
 import { PopupWithForm } from '../components/PopupWithForm';
+import { UserInfo } from '../components/UserInfo';
 
 const addCardFormValidation = new FormValidator(config, constants.popupFormAdd);
 const editProfileFormValidation = new FormValidator(config, constants.formProfileEdit);
@@ -15,26 +16,28 @@ const section = new Section({ items: initialCards, renderer: addPhoto }, '.galle
 const popupWithImage = new PopupWithImage('.popup_viewing');
 const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler);
 const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling);
+const userInfo = new UserInfo({ profileNameSelector: '.profile__title', profileJobSelector: '.profile__subtitle' });
 
 function editingProfiles() {
   editProfileFormValidation.resetButtonMessegeError();
-  constants.nameInput.value = constants.profileTitle.textContent;
-  constants.jobInput.value = constants.profileSubtitle.textContent;
-  editPopupForm.openPopup(constants.popupProfile);
+  const { name, job } = userInfo.getUserInfo();
+  constants.nameInput.value = name;
+  constants.jobInput.value = job;
+  editPopupForm.openPopup();
 }
 
 function addImageOpenPopup() {
   constants.popupFormAdd.reset();
   addCardFormValidation.resetButtonMessegeError();
-  addPopupForm.openPopup(constants.addCardPopup);
+  addPopupForm.openPopup();
 }
 
 function editProfileSubmitFormHandling(data) {
-  const {name, job} = data;
-  constants.profileTitle.textContent = name;
-  constants.profileSubtitle.textContent = job;
+  const { name, job } = data;
+  userInfo.setUserInfo(name, job);
   editPopupForm.closePopup();
 }
+
 
 function addNewImage(image) {
   const card = new Card(
@@ -68,6 +71,4 @@ addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
 addPopupForm.setEventListeners();
 editPopupForm.setEventListeners();
-
-
 section.renderItems();
