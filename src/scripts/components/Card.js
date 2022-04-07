@@ -21,28 +21,26 @@ export class Card {
     this._gallery.querySelector('.gallery__text').textContent = this._name;
     this._galleryPhoto.src = this._link;
     this._galleryPhoto.alt = this._name;
+    this._buttonLike = this._gallery.querySelector('.gallery__heart');
+    this._buttonDelete = this._gallery.querySelector('.gallery__delete');
     this._setAddEventListener();
-    this._deleteCard();
-    this._likeCard();
     return this._gallery;
   }
 
   _setAddEventListener() {
+    this._buttonDelete.addEventListener('click', () => this._deleteCard());
+    this._buttonLike.addEventListener('click', () => this._likeCard());
     this._galleryPhoto.addEventListener('click', () => {
       this._zoomImagePopup({ link: this._link, name: this._name });
     })
   }
 
   _deleteCard() {
-    this._gallery.querySelector('.gallery__delete').addEventListener('click', () => {
-      this._gallery.remove();
-      this._gallery = null;
-    });
+    this._gallery.remove();
+    this._gallery = null;
   }
 
   _likeCard() {
-    this._gallery.querySelector('.gallery__heart').addEventListener('click', eve => {
-      eve.target.classList.toggle('gallery__heart_active')
-    });
+    this._buttonLike.classList.toggle('gallery__heart_active');
   }
 }
