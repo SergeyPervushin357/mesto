@@ -27,7 +27,6 @@ function editingProfiles() {
 }
 
 function addImageOpenPopup() {
-  constants.popupFormAdd.reset();
   addCardFormValidation.resetButtonMessegeError();
   addPopupForm.openPopup();
 }
@@ -39,7 +38,7 @@ function editProfileSubmitFormHandling(data) {
 }
 
 
-function addNewImage(image) {
+function createCard(image) {
   const card = new Card(
     image,
     constants.imageTemplate,
@@ -52,13 +51,13 @@ function addNewImage(image) {
 }
 
 function addImageFormSubmitHandler(data) {
-  section.addItem(addNewImage(data));
+  section.addItem(createCard(data));
   addCardFormValidation.deactivateButton();
   addPopupForm.closePopup();
 }
 
 function addPhoto(image) {
-  section.addItem(addNewImage(image));
+  section.addItem(createCard(image));
 }
 
 

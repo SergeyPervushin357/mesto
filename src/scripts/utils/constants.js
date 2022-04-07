@@ -5,3 +5,5 @@ export const jobInput = document.querySelector('.popup__text_type_job');
 export const imageTemplate = '.images';
 export const popupFormAdd = document.querySelector('.popup__form_image');
 export const formProfileEdit = document.querySelector('.popup__form_edit');
+export const caption = document.querySelector('.popup__caption');
+export const image = document.querySelector('.popup__image');

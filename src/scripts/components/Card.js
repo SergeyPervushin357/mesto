@@ -22,21 +22,27 @@ export class Card {
     this._galleryPhoto.src = this._link;
     this._galleryPhoto.alt = this._name;
     this._setAddEventListener();
+    this._deleteCard();
+    this._likeCard();
     return this._gallery;
   }
 
   _setAddEventListener() {
+    this._galleryPhoto.addEventListener('click', () => {
+      this._zoomImagePopup({ link: this._link, name: this._name });
+    })
+  }
+
+  _deleteCard() {
     this._gallery.querySelector('.gallery__delete').addEventListener('click', () => {
       this._gallery.remove();
       this._gallery = null;
     });
+  }
 
+  _likeCard() {
     this._gallery.querySelector('.gallery__heart').addEventListener('click', eve => {
       eve.target.classList.toggle('gallery__heart_active')
     });
-
-    this._galleryPhoto.addEventListener('click', () => {
-      this._zoomImagePopup({ link: this._link, name: this._name });
-    })
   }
 }
