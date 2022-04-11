@@ -6,6 +6,4 @@ export const imageTemplate = '.images';
 export const popupFormAdd = document.querySelector('.popup__form_image');
 export const formProfileEdit = document.querySelector('.popup__form_edit');
 export const formAvatarEdit = document.querySelector('.popup__form_type_edit-avatar');
-export const caption = document.querySelector('.popup__caption');
-export const image = document.querySelector('.popup__image');
 export const openPopupAvatarChange = document.querySelector('.profile__image');

@@ -5,7 +5,6 @@ export class UserInfo {
     this._avatar = document.querySelector(avatarSelector);
   }
 
-
   getUserInfo() {
     return {
       name: this._name.textContent,

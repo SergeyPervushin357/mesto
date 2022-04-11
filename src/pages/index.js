@@ -1,32 +1,32 @@
-import '../../styles/index.css';
-import { initialCards } from "../utils/initial-cards";
-import { Card } from "../components/Card";
-import { FormValidator } from "../components/FormValidator";
-import { Section } from '../components/Section'
-import * as constants from '../utils/constants';
-import { config } from '../utils/configValidation';
-import { PopupWithImage } from '../components/PopupWithImage';
-import { PopupWithForm } from '../components/PopupWithForm';
-import { UserInfo } from '../components/UserInfo';
-import { api } from '../components/Api'
+import '../pages/index.css';
+import { Card } from "../scripts/components/Card";
+import { FormValidator } from "../scripts/components/FormValidator";
+import { Section } from '../scripts/components/Section'
+import * as constants from '../scripts/utils/constants';
+import { config } from '../scripts/utils/configValidation';
+import { PopupWithImage } from '../scripts/components/PopupWithImage';
+import { PopupWithForm } from '../scripts/components/PopupWithForm';
+import { UserInfo } from '../scripts/components/UserInfo';
+import { api } from '../scripts/components/Api'
 
 const addCardFormValidation = new FormValidator(config, constants.popupFormAdd);
 const editProfileFormValidation = new FormValidator(config, constants.formProfileEdit);
 const newAvatarValidation = new FormValidator(config, constants.formAvatarEdit);
 
 const section = new Section(addPhoto, '.gallery__list');
+
 const popupWithImage = new PopupWithImage('.popup_viewing');
 const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler);
 const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling);
-
 const confirmPopup = new PopupWithForm('.popup_type_card-delete');
+const newAvatar = new PopupWithForm('.popup_type_edit-avatar', submitAvatarForm);
+
 const userInfo = new UserInfo({
   profileNameSelector: '.profile__title',
   profileJobSelector: '.profile__subtitle',
   avatarSelector: '.profile__avatar'
 });
 
-const newAvatar = new PopupWithForm('.popup_type_edit-avatar', submitAvatarForm);
 
 let userId;
 
@@ -63,10 +63,11 @@ function editProfileSubmitFormHandling({ name, job }) {
 };
 
 function addImageFormSubmitHandler({ name, link }) {
+  const createdSubmit = true;
   api.addCard(name, link)
     .then(res => {
-      addPhoto(res);
-      addPopupForm.closePopup();
+      addPhoto(res, createdSubmit);
+      location.reload();
     })
     .catch((err) => {
       err.then((res) => {
@@ -91,8 +92,8 @@ function submitAvatarForm({ linkAvatar }) {
 }
 
 
-function addPhoto(image) {
-  section.addItem(createCard(image));
+function addPhoto(image, createdSubmit) {
+  section.addItem(createCard(image), createdSubmit);
 };
 
 function createCard(image) {
@@ -109,7 +110,7 @@ function createCard(image) {
         api.deleteCard(id)
           .then(() => {
             card.deleteCards();
-            confirmPopup.closePopup();
+            location.reload();
           })
           .catch((err) => {
             err.then((res) => {
@@ -155,6 +156,7 @@ constants.openPopupAvatarChange.addEventListener('click', avatarChange);
 addCardFormValidation.enableValidation();
 editProfileFormValidation.enableValidation();
 newAvatarValidation.enableValidation();
+
 popupWithImage.setEventListeners();
 addPopupForm.setEventListeners();
 editPopupForm.setEventListeners();
