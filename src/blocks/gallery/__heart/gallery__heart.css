@@ -6,6 +6,8 @@
   min-width: 22px;
   cursor: pointer;
   transition: opacity 0.4s ease-in;
+  padding: 0;
+  margin-bottom: 3px;
 }
 
 .gallery__heart:hover {
