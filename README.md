@@ -1,7 +1,7 @@
 # Проект: Местo.
 
 
-https://user-images.githubusercontent.com/94537074/163059861-9512111e-086a-42d8-93f0-d79bd77fe22f.mp4
+https://user-images.githubusercontent.com/94537074/163061859-2de7d704-4ef2-4a3c-a95e-a54655c355a4.mp4
 
 
 
@@ -15,6 +15,10 @@ https://user-images.githubusercontent.com/94537074/163059861-9512111e-086a-42d8-
 * Добавлена возможность добавления новых картинок на сайт. Так же реализованна плавность открытия и закрытия окон.
 
 * [Ссылка на Mesto](https://sergeypervushin357.github.io/mesto/index.html)
+
+
+
+
 
 
 
