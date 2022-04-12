@@ -1,11 +1,7 @@
 # Проект: Местo.
 
 
-
-
-
-https://user-images.githubusercontent.com/94537074/163062748-fc024358-e4b0-40a2-b863-404b74d6a766.mp4
-
+Uploading Mesto — Яндекс.Браузер 2022-04-13 02-21-17.mp4…
 
 
 
