@@ -18,7 +18,7 @@ const section = new Section(addPhoto, '.gallery__list');
 
 const popupWithImage = new PopupWithImage('.popup_viewing');
 
-const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler, 'Создание...');
+const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler, 'Добавляем картинку...');
 const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling, 'Сохранение...');
 const newAvatar = new PopupWithForm('.popup_type_edit-avatar', submitAvatarForm, 'Сохранение...');
 

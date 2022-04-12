@@ -5,7 +5,6 @@ export class PopupWithConfirm extends Popup {
     super(popupSelector);
     this._handleSubmit = handleSubmit;
     this._titleButton = titleButton;
-    this._buttonConfirm = this._popup.querySelector('.popup__save');
     this._titleDefault = this._buttonConfirm.textContent;
   }
 
@@ -13,11 +12,11 @@ export class PopupWithConfirm extends Popup {
     this._handleSubmit = newSubmitHandler;
   }
 
-  setEventListeners(id, card) {
+  setEventListeners() {
     super.setEventListeners();
     this._buttonConfirm.addEventListener('click', () => {
       this.changingTextSubmission(true);
-      this._handleSubmit(id, card);
+      this._handleSubmit();
     })
   }
 
@@ -27,7 +26,7 @@ export class PopupWithConfirm extends Popup {
       this._buttonConfirm.setAttribute('disabled', 'true');
     } else {
       this._buttonConfirm.textContent = this._titleDefault;
-      this._buttonConfirm.removeAttribute('disabled');
+      
     }
   }
 }
