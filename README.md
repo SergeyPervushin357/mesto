@@ -1,6 +1,9 @@
 # Проект: Местo.
 
-https://user-images.githubusercontent.com/94537074/163055825-02f3957d-da0f-487b-8d06-06c904292a01.mp4
+
+https://user-images.githubusercontent.com/94537074/163059861-9512111e-086a-42d8-93f0-d79bd77fe22f.mp4
+
+
 
 
 ### Обзор
