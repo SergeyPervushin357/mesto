@@ -1,6 +1,10 @@
 # Проект: Местo.
-<video src="https://disk.yandex.ru/i/NvorFP5FdZ4s1Q"></video>&nbsp;
-<img src="https://pictures.s3.yandex.net/resources/Screen_Shot_2020-06-18_at_4.18.50_PM_1592653422.png"/>&nbsp;
+
+
+
+https://user-images.githubusercontent.com/94537074/163055697-606b6f46-33fd-4f7a-a76e-a67c6615d076.mp4
+
+
 ### Обзор
 
 Проэкт о Жак-Ив Кусто
