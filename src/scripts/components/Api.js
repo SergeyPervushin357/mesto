@@ -10,7 +10,6 @@ class Api {
       : Promise.reject(res.json())
   }
 
-
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",

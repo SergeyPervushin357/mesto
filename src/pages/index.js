@@ -6,6 +6,7 @@ import * as constants from '../scripts/utils/constants';
 import { config } from '../scripts/utils/configValidation';
 import { PopupWithImage } from '../scripts/components/PopupWithImage';
 import { PopupWithForm } from '../scripts/components/PopupWithForm';
+import { PopupWithConfirm } from '../scripts/components/PopupWithConfirm';
 import { UserInfo } from '../scripts/components/UserInfo';
 import { api } from '../scripts/components/Api'
 
@@ -16,17 +17,18 @@ const newAvatarValidation = new FormValidator(config, constants.formAvatarEdit);
 const section = new Section(addPhoto, '.gallery__list');
 
 const popupWithImage = new PopupWithImage('.popup_viewing');
-const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler);
-const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling);
-const confirmPopup = new PopupWithForm('.popup_type_card-delete');
-const newAvatar = new PopupWithForm('.popup_type_edit-avatar', submitAvatarForm);
+
+const addPopupForm = new PopupWithForm('.popup_add', addImageFormSubmitHandler, 'Создание...');
+const editPopupForm = new PopupWithForm('.popup_profile', editProfileSubmitFormHandling, 'Сохранение...');
+const newAvatar = new PopupWithForm('.popup_type_edit-avatar', submitAvatarForm, 'Сохранение...');
+
+const confirmPopup = new PopupWithConfirm('.popup_type_card-delete', 'Удаление...');
 
 const userInfo = new UserInfo({
   profileNameSelector: '.profile__title',
   profileJobSelector: '.profile__subtitle',
   avatarSelector: '.profile__avatar'
 });
-
 
 let userId;
 
@@ -62,12 +64,18 @@ function editProfileSubmitFormHandling({ name, job }) {
     .finally(() => { editPopupForm.changingTextSubmission(false); })
 };
 
+function deleteLastCard() {
+  document.querySelector('.gallery__list').lastElementChild.remove();
+}
+
 function addImageFormSubmitHandler({ name, link }) {
   const createdSubmit = true;
   api.addCard(name, link)
     .then(res => {
       addPhoto(res, createdSubmit);
-      location.reload();
+      deleteLastCard();
+      addPopupForm.closePopup();
+
     })
     .catch((err) => {
       err.then((res) => {
@@ -91,7 +99,6 @@ function submitAvatarForm({ linkAvatar }) {
     .finally(() => { newAvatar.changingTextSubmission(false); })
 }
 
-
 function addPhoto(image, createdSubmit) {
   section.addItem(createCard(image), createdSubmit);
 };
@@ -106,17 +113,26 @@ function createCard(image) {
     (id) => {
       confirmPopup.openPopup();
       confirmPopup.changeSubmitHandler(() => {
-        confirmPopup.changingTextSubmission(false);
         api.deleteCard(id)
           .then(() => {
             card.deleteCards();
-            location.reload();
+            api.getInitialCards()
+              .then(cardList => {
+                addPhoto(cardList[cardList.length - 1], false);
+                confirmPopup.closePopup();
+              })
+              .catch((err) => {
+                err.then((res) => {
+                  alert(res.message)
+                })
+              })
           })
           .catch((err) => {
             err.then((res) => {
               alert(res.message)
             })
           })
+          .finally(() => { confirmPopup.changingTextSubmission(false); })
       });
     },
     userId,
@@ -148,7 +164,6 @@ function createCard(image) {
   return photo;
 }
 
-
 constants.buttonOpenPopupEdit.addEventListener('click', editingProfiles);
 constants.profileButton.addEventListener('click', addImageOpenPopup);
 constants.openPopupAvatarChange.addEventListener('click', avatarChange);
@@ -160,8 +175,8 @@ newAvatarValidation.enableValidation();
 popupWithImage.setEventListeners();
 addPopupForm.setEventListeners();
 editPopupForm.setEventListeners();
+newAvatar.setEventListeners();
 confirmPopup.setEventListeners();
-newAvatar.setEventListeners()
 
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([res, cardList]) => {
