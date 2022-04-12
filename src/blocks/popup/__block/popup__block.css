@@ -1,6 +1,8 @@
 .popup__block {
   max-width: 430px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   position: relative;
   background-color: #FFFFFF;
   border: none;
