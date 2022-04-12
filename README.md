@@ -1,7 +1,11 @@
 # Проект: Местo.
 
 
-Uploading Mesto — Яндекс.Браузер 2022-04-13 02-21-17.mp4…
+
+
+https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-af8c-6be74f695041.mp4
+
+
 
 
 
