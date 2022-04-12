@@ -17,13 +17,33 @@ export class PopupWithForm extends Popup {
     return values;
   }
 
+  setInputValues(data) {
+    this._inputs.forEach(input => {
+      input.value = data[input.name]
+    })
+  }
+
+  openPopup() {
+    super.openPopup();
+    if (this._buttonConfirm.disabled) {
+      this._buttonConfirm.removeAttribute('disabled');
+    }
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (event) => {
       this.changingTextSubmission(true);
       event.preventDefault();
-      this._handleSubmit(this._getInputValues());
-    })
+      this._handleSubmit(this._getInputValues())
+      .then(() => this.closePopup())
+      .catch((err) => {
+        err.then((res) => {
+          alert(res.message)
+        })
+      })
+      .finally(() => this.changingTextSubmission(false))
+  });
   }
 
   closePopup() {
@@ -39,4 +59,4 @@ export class PopupWithForm extends Popup {
       this._buttonConfirm.textContent = this._titleDefault;
     }
   }
-}
+};

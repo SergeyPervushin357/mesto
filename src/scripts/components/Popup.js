@@ -9,7 +9,6 @@ export class Popup {
   openPopup() {
     document.addEventListener('keydown', this._handleEscClose);
     this._popup.classList.add('popup_open');
-    this._buttonConfirm.removeAttribute('disabled');
   }
 
   closePopup() {

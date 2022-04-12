@@ -38,9 +38,7 @@ function avatarChange() {
 }
 
 function editingProfiles() {
-  const { name, job } = userInfo.getUserInfo();
-  constants.nameInput.value = name;
-  constants.jobInput.value = job;
+  editPopupForm.setInputValues(userInfo.getUserInfo())
   editProfileFormValidation.resetButtonMessegeError();
   editPopupForm.openPopup();
 }
@@ -51,52 +49,30 @@ function addImageOpenPopup() {
 }
 
 function editProfileSubmitFormHandling({ name, job }) {
-  api.editProfile(name, job)
+  return api.editProfile(name, job)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
-      editPopupForm.closePopup();
     })
-    .catch((err) => {
-      err.then((res) => {
-        alert(res.message)
-      })
-    })
-    .finally(() => { editPopupForm.changingTextSubmission(false); })
 };
-
-function deleteLastCard() {
-  document.querySelector('.gallery__list').lastElementChild.remove();
-}
 
 function addImageFormSubmitHandler({ name, link }) {
   const createdSubmit = true;
-  api.addCard(name, link)
+  return api.addCard(name, link)
     .then(res => {
       addPhoto(res, createdSubmit);
       deleteLastCard();
-      addPopupForm.closePopup();
-
     })
-    .catch((err) => {
-      err.then((res) => {
-        alert(res.message)
-      })
-    })
-    .finally(() => { addPopupForm.changingTextSubmission(false); })
 }
 
 function submitAvatarForm({ linkAvatar }) {
-  api.changeAvatar(linkAvatar)
+ return api.changeAvatar(linkAvatar)
     .then(res => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
-      newAvatar.closePopup();
     })
-    .catch((err) => {
-      err.then((res) => {
-        console.log(res.message)
-      })
-    })
-    .finally(() => { newAvatar.changingTextSubmission(false); })
+}
+
+function deleteLastCard() {
+  document.querySelector('.gallery__list').lastElementChild.remove();
 }
 
 function addPhoto(image, createdSubmit) {

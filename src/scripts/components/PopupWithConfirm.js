@@ -8,6 +8,13 @@ export class PopupWithConfirm extends Popup {
     this._titleDefault = this._buttonConfirm.textContent;
   }
 
+  openPopup() {
+    super.openPopup();
+    if (this._buttonConfirm.disabled) {
+      this._buttonConfirm.removeAttribute('disabled');
+    }
+  }
+
   changeSubmitHandler(newSubmitHandler) {
     this._handleSubmit = newSubmitHandler;
   }
@@ -26,7 +33,7 @@ export class PopupWithConfirm extends Popup {
       this._buttonConfirm.setAttribute('disabled', 'true');
     } else {
       this._buttonConfirm.textContent = this._titleDefault;
-      
     }
   }
+
 }
