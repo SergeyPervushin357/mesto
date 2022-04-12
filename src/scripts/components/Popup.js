@@ -3,6 +3,7 @@ export class Popup {
     this._popup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._buttonConfirm = this._popup.querySelector('.popup__save');
+    this._form = this._popup.querySelector('.popup__form');
   }
 
   openPopup() {
