@@ -116,10 +116,10 @@ function createCard(image) {
         api.deleteCard(id)
           .then(() => {
             card.deleteCards();
+            confirmPopup.closePopup();
             api.getInitialCards()
               .then(cardList => {
                 addPhoto(cardList[cardList.length - 1], false);
-                confirmPopup.closePopup();
               })
               .catch((err) => {
                 err.then((res) => {
