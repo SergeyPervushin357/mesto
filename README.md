@@ -1,4 +1,4 @@
-# Проект: Места мира!
+# 📃Проект: Места мира!
 
 ---
 
@@ -10,8 +10,10 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 ---
 
 
-### Проект: Места мира!
-- Одностраничный сайт. Адаптированный для разных разрешений. Как Desktop и MOBILE Реализованный с помощью:
+### 📃Краткое описание:
+- Одностраничный сайт. Адаптированный для разных разрешений. Как Desktop так MOBILE version. На сайте реализованна логика открытия модальных окон редактирования данных с помощью языка JavaScript.
+
+- Реализованный с помощью:&nbsp;
 
 ---
 <div id="header" align="center">
@@ -24,7 +26,7 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 
 ---
 
- ## Используемые Технологии:
+ ## 📃Используемые Технологии:
  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
@@ -32,7 +34,7 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
   <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
 ---
 
-## Реализовано:
+## 📃Реализовано:
   - Подключение сервера.
   - Загрузка информации о пользователе с сервера
   - Загрузка массива карточек с сервера
