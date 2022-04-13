@@ -12,10 +12,10 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 
 ### Проект: Места мира!
 - Одностраничный сайт. Адаптированный для разных разрешений. Как Desktop и MOBILE Реализованный с помощью:
-<div id="header" >
+<div id="header" style="display: flex;">
 <img align="right"src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/backhand-index-pointing-down_1f447.png" width="100"/>
   </div>
-  <div align="center"id="header" align="center">
+  <div align="center"id="header">
 <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/backhand-index-pointing-down_1f447.png" width="100"/>
   </div>
   <div id="header" align="center">
