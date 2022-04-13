@@ -47,5 +47,5 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 
 
 
-## [Проект. Путешествия по живописным местам мира!](https://sergeypervushin357.github.io/mesto/index.html)
+## 🚀[Проект. Путешествия по живописным местам мира!](https://sergeypervushin357.github.io/mesto/index.html)🚀
 
