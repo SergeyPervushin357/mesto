@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 * Проект реализован с применением языка программирования java Script.
 * Добавлена возможность добавления новых картинок на сайт. Так же реализованна плавность открытия и закрытия окон.
 
-* [Ссылка на Mesto](https://sergeypervushin357.github.io/mesto/index.html)
+
 
 
 ## На данный момент произведена работа:
@@ -33,5 +33,5 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 
 
 
-
+## Проект  [Проект. Путешествия по живописным местам мира!](https://sergeypervushin357.github.io/mesto/index.html)
 
