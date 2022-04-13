@@ -19,7 +19,7 @@ https://user-images.githubusercontent.com/94537074/163071976-09698ec4-6f0d-4013-
 <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/backhand-index-pointing-down_1f447.png" width="100"/>
   </div>
   <div id="header" align="left">               
-<img align="left" src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/backhand-index-pointing-down_1f447.png" width="100"/>
+<img align="up" src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/backhand-index-pointing-down_1f447.png" width="100"/>
   </div>
 
 
